@@ -1,0 +1,19 @@
+Section "Device"
+    Identifier    "Configured Video Device"
+    Option "AGPMode" "4"
+    Option "AGPFastWrite" "True"
+    Option "EnablePageFlip" "True"
+    Option "AGPMode" "4"
+    Option "AGPSize" "64"
+    Option "RingSize" "8"
+    Option "BufferSize" "2"
+    Option "EnableDepthMoves" "true"
+    Option "RenderAccel" "true"
+    # Eyecandy Stuff
+    Option "AccelMethod" "XAA"
+    Option "EnablePageFlip" "true
+    Option "DDCMode"
+    Option "SubPixelOrder" "NONE"
+    Option "ColorTiling" "false"
+    Option "MigrationHeuristic" "greedy"
+EndSection
