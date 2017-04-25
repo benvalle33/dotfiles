@@ -1,0 +1,163 @@
+# This is a shell archive.  Save it in a file, remove anything before
+# this line, and then unpack it by entering "sh file".  Note, it may
+# create directories; files and directories will be owned by you and
+# have default permissions.
+#
+# This archive contains:
+#
+#	network-manager
+#	network-manager/Makefile
+#	network-manager/distinfo
+#	network-manager/pkg-descr
+#	network-manager/pkg-plist
+#
+echo c - network-manager
+mkdir -p network-manager > /dev/null 2>&1
+echo x - network-manager/Makefile
+sed 's/^X//' >network-manager/Makefile << '4c2e7fcf0d59b5c79f8cae30983390cb'
+X# Created by: Chris Hutchinson <portmaster@BSDforge.com>
+X# $FreeBSD$
+X
+XPORTNAME=	network-manager
+XPORTVERSION=	0.9.0
+XCATEGORIES=	net-mgmt
+XMASTER_SITES=	http://BSDforge.com/projects/source/net-mgmt/network-manager/
+X
+XMAINTAINER=	portmaster@BSDforge.com
+XCOMMENT=	Networkmgr is a GTK Network Manager For FreeBSD
+X
+XLICENSE=	BSD3CLAUSE
+X
+XRUN_DEPENDS=	sudo:${PORTSDIR}/security/sudo
+XBUILD_DEPENDS=	${RUN_DEPENDS}
+X
+XUSES=		python tar:xz
+XUSE_PYTHON=	distutils
+X
+Xdo-install:
+X	@${MKDIR} ${STAGEDIR}${PREFIX}/share/networkmgr
+X	(cd ${WRKSRC}/networkmgr && ${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/share/networkmgr/)
+X
+X	@${MKDIR} ${STAGEDIR}${PREFIX}/share/pixmaps/networkmgr
+X	(cd ${WRKSRC}/networkmgr/icons && \
+X	${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/share/pixmaps/networkmgr/)
+X
+X	@${MKDIR} ${STAGEDIR}${PREFIX}/share/applications
+X		${CP} ${WRKSRC}/networkmgr.desktop ${STAGEDIR}${PREFIX}/share/applications/
+X
+X	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/xdg/autostart
+X		${CP} ${WRKSRC}/networkmgr.desktop ${STAGEDIR}${PREFIX}/etc/xdg/autostart/
+X
+X	${INSTALL_SCRIPT} ${WRKSRC}/networkmgr/detect-nics.sh ${STAGEDIR}${PREFIX}/share/networkmgr/
+X	${INSTALL_SCRIPT} ${WRKSRC}/networkmgr/detect-wifi.sh ${STAGEDIR}${PREFIX}/share/networkmgr/
+X	${INSTALL_SCRIPT} ${WRKSRC}/networkmgr/enable-net.sh ${STAGEDIR}${PREFIX}/share/networkmgr/
+X	${INSTALL_SCRIPT} ${WRKSRC}/networkmgr/functions-networking.sh ${STAGEDIR}${PREFIX}/share/networkmgr/
+X	${INSTALL_SCRIPT} ${WRKSRC}/networkmgr/test-netup.sh ${STAGEDIR}${PREFIX}/share/networkmgr/
+X	${INSTALL_SCRIPT} ${WRKSRC}/networkmgr.py ${STAGEDIR}${PREFIX}/bin/
+X
+X.include <bsd.port.mk>
+4c2e7fcf0d59b5c79f8cae30983390cb
+echo x - network-manager/distinfo
+sed 's/^X//' >network-manager/distinfo << '069e1ad6753058018a6e8b711acd9255'
+XSHA256 (network-manager-0.9.0.tar.xz) = dba33121e058973589d8a109f0f146be7c8a7aa866705dbeb3f737b441f042d4
+XSIZE (network-manager-0.9.0.tar.xz) = 21048
+069e1ad6753058018a6e8b711acd9255
+echo x - network-manager/pkg-descr
+sed 's/^X//' >network-manager/pkg-descr << 'ac120b225ebd4198aa62f07a21c0e67b'
+XNetworkmgr is a GTK Network Manager For FreeBSD.
+XIt was derived from the GhostBSD application by the same name.
+X
+XMetworkmgr provides statistics, and configuration options
+Xfor all your network related devices.
+X
+X
+XWWW: http://BSDforge.com/projects/net-mgmt/network-manager/
+ac120b225ebd4198aa62f07a21c0e67b
+echo x - network-manager/pkg-plist
+sed 's/^X//' >network-manager/pkg-plist << '72562f09d23138ee885dad4ffe504bb4'
+Xbin/networkmgr.py
+Xetc/xdg/autostart/networkmgr.desktop
+Xshare/applications/networkmgr.desktop
+X@mode 0555
+Xshare/networkmgr/authentication.py
+Xshare/networkmgr/detect-nics.sh
+Xshare/networkmgr/detect-wifi.sh
+Xshare/networkmgr/enable-net.sh
+Xshare/networkmgr/functions-networking.sh
+X@mode
+Xshare/networkmgr/icons/nm-adhoc.png
+Xshare/networkmgr/icons/nm-device-wired-autoip.png
+Xshare/networkmgr/icons/nm-device-wired.png
+Xshare/networkmgr/icons/nm-device-wireless.png
+Xshare/networkmgr/icons/nm-device-wwan.png
+Xshare/networkmgr/icons/nm-mb-roam.png
+Xshare/networkmgr/icons/nm-no-connection.png
+Xshare/networkmgr/icons/nm-secure-lock.png
+Xshare/networkmgr/icons/nm-signal-0-secure.png
+Xshare/networkmgr/icons/nm-signal-0.png
+Xshare/networkmgr/icons/nm-signal-00-secure.png
+Xshare/networkmgr/icons/nm-signal-00.png
+Xshare/networkmgr/icons/nm-signal-100-secure.png
+Xshare/networkmgr/icons/nm-signal-100.png
+Xshare/networkmgr/icons/nm-signal-25-secure.png
+Xshare/networkmgr/icons/nm-signal-25.png
+Xshare/networkmgr/icons/nm-signal-50-secure.png
+Xshare/networkmgr/icons/nm-signal-50.png
+Xshare/networkmgr/icons/nm-signal-75-secure.png
+Xshare/networkmgr/icons/nm-signal-75.png
+Xshare/networkmgr/icons/nm-tech-3g.png
+Xshare/networkmgr/icons/nm-tech-cdma-1x.png
+Xshare/networkmgr/icons/nm-tech-edge.png
+Xshare/networkmgr/icons/nm-tech-evdo.png
+Xshare/networkmgr/icons/nm-tech-gprs.png
+Xshare/networkmgr/icons/nm-tech-hspa.png
+Xshare/networkmgr/icons/nm-tech-umts.png
+Xshare/networkmgr/icons/nm-vpn-active-lock.png
+Xshare/networkmgr/icons/nm-vpn-connecting12.png
+Xshare/networkmgr/icons/nm-vpn-connecting13.png
+Xshare/networkmgr/icons/nm-vpn-connecting14.png
+Xshare/networkmgr/icons/nm-vpn-lock.png
+Xshare/networkmgr/icons/nm-vpn-standalone-lock.png
+Xshare/networkmgr/icons/nm-wwan-tower.png
+X@mode 0555
+Xshare/networkmgr/net_api.py
+Xshare/networkmgr/netcardmgr.py
+Xshare/networkmgr/test-netup.sh
+Xshare/networkmgr/trayicon.py
+X@mode
+Xshare/pixmaps/networkmgr/nm-adhoc.png
+Xshare/pixmaps/networkmgr/nm-device-wired-autoip.png
+Xshare/pixmaps/networkmgr/nm-device-wired.png
+Xshare/pixmaps/networkmgr/nm-device-wireless.png
+Xshare/pixmaps/networkmgr/nm-device-wwan.png
+Xshare/pixmaps/networkmgr/nm-mb-roam.png
+Xshare/pixmaps/networkmgr/nm-no-connection.png
+Xshare/pixmaps/networkmgr/nm-secure-lock.png
+Xshare/pixmaps/networkmgr/nm-signal-0-secure.png
+Xshare/pixmaps/networkmgr/nm-signal-0.png
+Xshare/pixmaps/networkmgr/nm-signal-00-secure.png
+Xshare/pixmaps/networkmgr/nm-signal-00.png
+Xshare/pixmaps/networkmgr/nm-signal-100-secure.png
+Xshare/pixmaps/networkmgr/nm-signal-100.png
+Xshare/pixmaps/networkmgr/nm-signal-25-secure.png
+Xshare/pixmaps/networkmgr/nm-signal-25.png
+Xshare/pixmaps/networkmgr/nm-signal-50-secure.png
+Xshare/pixmaps/networkmgr/nm-signal-50.png
+Xshare/pixmaps/networkmgr/nm-signal-75-secure.png
+Xshare/pixmaps/networkmgr/nm-signal-75.png
+Xshare/pixmaps/networkmgr/nm-tech-3g.png
+Xshare/pixmaps/networkmgr/nm-tech-cdma-1x.png
+Xshare/pixmaps/networkmgr/nm-tech-edge.png
+Xshare/pixmaps/networkmgr/nm-tech-evdo.png
+Xshare/pixmaps/networkmgr/nm-tech-gprs.png
+Xshare/pixmaps/networkmgr/nm-tech-hspa.png
+Xshare/pixmaps/networkmgr/nm-tech-umts.png
+Xshare/pixmaps/networkmgr/nm-vpn-active-lock.png
+Xshare/pixmaps/networkmgr/nm-vpn-connecting12.png
+Xshare/pixmaps/networkmgr/nm-vpn-connecting13.png
+Xshare/pixmaps/networkmgr/nm-vpn-connecting14.png
+Xshare/pixmaps/networkmgr/nm-vpn-lock.png
+Xshare/pixmaps/networkmgr/nm-vpn-standalone-lock.png
+Xshare/pixmaps/networkmgr/nm-wwan-tower.png
+72562f09d23138ee885dad4ffe504bb4
+exit
